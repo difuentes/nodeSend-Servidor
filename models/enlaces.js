@@ -1,8 +1,8 @@
 const moongose = require('mongoose');
-const SChema = moongose.Schema;
+const Schema = moongose.Schema;
 
 
-const enlaceSchema = new SChema({
+const enlaceSchema = new Schema({
     url: {
         type: String,
         required: true

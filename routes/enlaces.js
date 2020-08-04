@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 //instancia controlador 
 const enlacesController = require('../controllers/enlacesController');
+const archivosController = require('../controllers/archivosController');
 //libreria validaciones
 const {check} = require('express-validator');
 //instancia de middleware
@@ -16,6 +17,12 @@ router.post('/',
     auth,
     enlacesController.nuevoEnlace
 
+);
+
+
+router.get('/:url',
+    enlacesController.obtenerEnlace,
+    archivosController.eliminarArchivo
 );
 
 module.exports = router;
