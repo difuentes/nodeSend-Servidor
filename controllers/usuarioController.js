@@ -30,5 +30,5 @@ exports.nuevoUsuario = async (req,res) =>{
     //guardar usuario 
     await usuario.save();
     
-    res.json({msg:'usuario ingresado'});
+    res.json({msg:'Usuario Registrado Correctamente !'});
 }

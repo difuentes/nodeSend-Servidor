@@ -1,11 +1,15 @@
 const express = require('express');
 const conectarDB = require('./config/db.js');
 
-//conectar DB_mongo
-conectarDB();
+const cors = require('cors')
 
 //crear servidor 
 const app = express();
+
+//conectar DB_mongo
+conectarDB();
+//habilitar cors 
+app.use( cors());
 
 //asignar puerto dispo si no encuentra por defecto 
 const port = process.env.PORT || 4060;
