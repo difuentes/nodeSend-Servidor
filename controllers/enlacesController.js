@@ -15,11 +15,11 @@ exports.nuevoEnlace = async(req,res,next) =>{
 
 
     //crear objeto de enlace
-    const {nombre_original,password} = req.body;
+    const {nombre_original,nombre} = req.body;
 
     const enlace = new Enlaces();
     enlace.url = shorid.generate();
-    enlace.nombre = shorid.generate();
+    enlace.nombre = nombre;
     enlace.nombre_original =nombre_original;
     
 
