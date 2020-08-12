@@ -3,6 +3,7 @@ const shorid = require('shortid');
 const bcrypt = require('bcrypt');
 const {validationResult} = require("express-validator");
 
+//nuevo enlace
 exports.nuevoEnlace = async(req,res,next) =>{
 
     //Revisar si hay errores
@@ -51,10 +52,7 @@ exports.nuevoEnlace = async(req,res,next) =>{
 
     
 }
-
-
 //obtener el enlace 
-
 exports.obtenerEnlace =  async(req,res,next)=> {
         
         console.log(req.params.url)
@@ -72,25 +70,16 @@ exports.obtenerEnlace =  async(req,res,next)=> {
         //si enlace existe 
         res.json({archivo: enlace.nombre})
 
-        //si las descargas son iguales a 1 -borrar la entrada y borrar el archivo
-        const {descargar,nombre }= enlace 
+        next(); 
+}
+//traer todos los Enlaces
+exports.todosEnlaces = async(req,res,next)=>{
 
+    try {
+        const enlaces = await Enlaces.find({}).select('url -_id');
+        res.json({enlaces});
 
-        if(descargar === 1 ){
-            //eliminar el archivo
-            req.archivo = nombre;
-            //eliminar entrada de BD
-            await Enlaces.findOneAndDelete(req.params.url);
-
-            next();
-
-        }else{
-            enlace.descargar--;
-            await enlace.save();
-             //si las descagas son mayores a 1 restar
-            console.log("mas de uno");
-        }
-
-       
-        
+    } catch (error) {
+        console.log(error)
+    }
 }
