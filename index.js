@@ -9,7 +9,11 @@ const app = express();
 //conectar DB_mongo
 conectarDB();
 //habilitar cors 
-app.use( cors());
+// Habilitar Cors
+const opcionesCors = {
+    origin: process.env.FRONTEND_URL
+}
+app.use( cors(opcionesCors) );
 
 //asignar puerto dispo si no encuentra por defecto 
 const port = process.env.PORT || 4060;

@@ -66,7 +66,7 @@ exports.descargar = async (req,res,next) =>{
 
     //eliminar archivo y entrada de _BD
     //si las descargas son iguales a 1 -borrar la entrada y borrar el archivo
-    const {descargar,nombre }= enlace 
+    const {descargar,nombre } = enlace 
 
     if(descargar === 1 ){
         //eliminar el archivo
@@ -77,6 +77,7 @@ exports.descargar = async (req,res,next) =>{
         next();
 
     }else{
+        
         enlace.descargar--;
         await enlace.save();
          //si las descagas son mayores a 1 restar
